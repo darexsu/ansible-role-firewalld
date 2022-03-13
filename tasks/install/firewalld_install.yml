@@ -6,12 +6,8 @@
     update_cache: true
   with_items: "{{ firewalld_install.packages }}"
 
-- name: service facts
-  ansible.builtin.service_facts:
-
 - name: "ensure firewalld is {{ firewalld['service']['state'] }}"
   ansible.builtin.service:
     name: firewalld
     state: "{{ firewalld['service']['state'] }}"
     enabled: "{{ firewalld['service']['enabled'] }}"
-  when: ansible_facts.services is search("firewalld")

@@ -24,15 +24,17 @@
   include_tasks: ./tasks/install/firewalld_install.yml
   when: firewalld_install.enabled
 
+- name: gather the package facts
+  ansible.builtin.package_facts:
+    manager: auto
+
 - name: include firewalld rules
   include_tasks: ./tasks/config/firewalld_rules.yml
-
-- name: service facts
-  ansible.builtin.service_facts:
+  when: ("firewalld") in ansible_facts.packages
 
 - name: "ensure firewalld is {{ firewalld['service']['state'] }}"
   ansible.builtin.service:
     name: firewalld
     state: "{{ firewalld['service']['state'] }}"
     enabled: "{{ firewalld['service']['enabled'] }}"
-  when: ansible_facts.services is search("firewalld")
+  when: ("firewalld") in ansible_facts.packages
