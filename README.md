@@ -1,6 +1,20 @@
 # Ansible role firewalld
 [![CI Molecule](https://github.com/darexsu/ansible-role-firewalld/actions/workflows/ci.yml/badge.svg)](https://github.com/darexsu/ansible-role-firewalld/actions/workflows/ci.yml)&emsp;![](https://img.shields.io/static/v1?label=idempotence&message=ok&color=success)&emsp;![Ansible Role](https://img.shields.io/ansible/role/d/58371?color=blue&label=downloads)
 
+  - Role:
+      - [platforms](#platforms)
+      - [install](#install)
+      - [behaviour](#behaviour)
+  - Playbooks (short version):
+      - [install and configure: firewalld](#install-and-configure-firewalld-short-version)
+      - [install: firewalld](#install-firewalld-short-version)
+      - [configure: add firewall rules](#configure-add-firewall-rules-short-version)
+  - Playbooks (full version):
+      - [install and configure: firewalld](#install-and-configure-firewalld-full-version)
+      - [configure: add firewall rules](#configure-add-firewall-rules-full-version)
+
+### Platforms
+
 |  Testing         | Ready for use      |
 | :--------------: | :--------------:   | 
 | Debian 11        |:heavy_check_mark:  |
@@ -10,19 +24,12 @@
 | Oracle Linux 8   |:heavy_check_mark:  |
 | Rocky Linux 8    |:heavy_check_mark:  | 
 
-### 1) Install role from Galaxy
+### Install
 ```
 ansible-galaxy install darexsu.firewalld --force
 ```
 
-### 2) Example playbooks:
-  
-  - [full playbook](#full-playbook)  
-    - install
-      - [official repo](#install-from-official-repo) 
-    - config
-      - [add firewall rules](#add-firewall-rules)
-
+### Behaviour
 
 Replace or Merge dictionaries (with "hash_behaviour=replace" in ansible.cfg):
 ```
@@ -44,7 +51,113 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
     
 ```
 
-### Full playbook
+##### Install and configure: firewalld (short version)
+```yaml
+
+---
+- hosts: all
+  become: true
+
+  vars:
+    merge:
+      # FirewallD
+      firewalld:
+        enabled: true
+      # FirewallD -> install
+      firewalld_install:
+        enabled: true
+      # FirewallD -> rules
+      firewalld_rules:
+        port_80:
+          enabled: true
+          zone: "public"
+          state: "enabled"
+          port: "80/tcp"
+          permanent: true
+        service_http:
+          enabled: true
+          zone: "public"
+          state: "enabled"
+          service: "http"
+          permanent: true
+        service_https:
+          enabled: true
+          zone: "public"
+          state: "enabled"
+          service: "https"
+          permanent: true
+      # ...
+  tasks:
+    - name: role darexsu firewalld
+      include_role:
+        name: darexsu.firewalld
+
+```
+##### Install: firewalld (short version)
+```yaml
+
+---
+- hosts: all
+  become: true
+
+  vars:
+    merge:
+      # FirewallD
+      firewalld:
+        enabled: true
+      # FirewallD -> install
+      firewalld_install:
+        enabled: true
+
+  tasks:
+    - name: role darexsu firewalld
+      include_role:
+        name: darexsu.firewalld
+
+```
+##### Configure: add firewall rules (short version)
+```yaml
+
+---
+- hosts: all
+  become: true
+
+  vars:
+    merge:
+      # FirewallD
+      firewalld:
+        enabled: true
+      # FirewallD -> rules
+      firewalld_rules:
+        port_80:
+          enabled: true
+          zone: "public"
+          state: "enabled"
+          port: "80/tcp"
+          permanent: true
+        service_http:
+          enabled: true
+          zone: "public"
+          state: "enabled"
+          service: "http"
+          permanent: true
+        service_https:
+          enabled: true
+          zone: "public"
+          state: "enabled"
+          service: "https"
+          permanent: true
+      # rule_name:
+      #   enabled: true
+      #   key: value
+      #   ...
+  tasks:
+    - name: role darexsu firewalld
+      include_role:
+        name: darexsu.firewalld
+
+```
+##### Install and configure: firewalld (full version)
 ```yaml
 
 ---
@@ -59,12 +172,10 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
         service:
           enabled: true
           state: "started"
-
       # FirewallD -> install
       firewalld_install:
         enabled: true
         packages: [firewalld]
-
       # FirewallD -> rules
       firewalld_rules:
         port_80:
@@ -95,7 +206,7 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
         name: darexsu.firewalld
 
 ```
-### Install from official repo
+##### Install: firewalld (full version)
 ```yaml
 
 ---
@@ -107,7 +218,6 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
       # FirewallD
       firewalld:
         enabled: true
-
       # FirewallD -> install
       firewalld_install:
         enabled: true
@@ -119,9 +229,8 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
         name: darexsu.firewalld
 
 ```
-### Add firewall rules
+##### Configure: add firewall rules (full version)
 ```yaml
-
 ---
 - hosts: all
   become: true
@@ -134,7 +243,6 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
         service:
           enabled: true
           state: "started"
-
       # FirewallD -> rules
       firewalld_rules:
         port_80:
