@@ -44,7 +44,7 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
     
 ```
 
-##### Full playbook
+### Full playbook
 ```yaml
 
 ---
@@ -95,7 +95,7 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
         name: darexsu.firewalld
 
 ```
-##### install-from-official-repo
+### Install from official repo
 ```yaml
 
 ---
@@ -119,7 +119,7 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
         name: darexsu.firewalld
 
 ```
-##### add firewall rules
+### Add firewall rules
 ```yaml
 
 ---
