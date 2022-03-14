@@ -7,11 +7,12 @@
       - [behaviour](#behaviour)
   - Playbooks (short version):
       - [install and configure: firewalld](#install-and-configure-firewalld-short-version)
-      - [install: firewalld](#install-firewalld-short-version)
-      - [configure: add firewall rules](#configure-add-firewall-rules-short-version)
+        - [install: firewalld](#install-firewalld-short-version)
+        - [configure: add firewall rules](#configure-add-firewall-rules-short-version)
   - Playbooks (full version):
       - [install and configure: firewalld](#install-and-configure-firewalld-full-version)
-      - [configure: add firewall rules](#configure-add-firewall-rules-full-version)
+        - [install: firewalld](#install-firewalld-full-version)
+        - [configure: add firewall rules](#configure-add-firewall-rules-full-version)
 
 ### Platforms
 
