@@ -21,7 +21,6 @@
       # FirewallD -> install
       firewalld_install:
         enabled: true
-        packages: [firewalld]
 
       # FirewallD -> rules
       firewalld_rules:

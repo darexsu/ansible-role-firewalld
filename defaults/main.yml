@@ -9,7 +9,6 @@ firewalld:
 # FirewallD -> install
 firewalld_install:
   enabled: false
-  packages: [firewalld]
 
 # FirewallD -> rules (examples)
 firewalld_rules:
@@ -38,3 +37,10 @@ firewalld_rules:
 #   enabled: true
 #   key: value
 #   ...
+
+# FirewallD -> constants
+firewalld_const:
+  RedHat:
+    packages: [firewalld]
+  Debian:
+    packages: [firewalld]

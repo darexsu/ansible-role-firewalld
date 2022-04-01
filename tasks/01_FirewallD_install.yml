@@ -4,7 +4,7 @@
     name: "{{ item }}"
     state: present
     update_cache: true
-  with_items: "{{ firewalld_install.packages }}"
+  with_items: "{{ firewalld_const[ansible_os_family]['packages'] }}"
 
 - name: "ensure firewalld is {{ firewalld['service']['state'] }}"
   ansible.builtin.service:

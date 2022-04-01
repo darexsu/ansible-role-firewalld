@@ -176,7 +176,6 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
       # FirewallD -> install
       firewalld_install:
         enabled: true
-        packages: [firewalld]
       # FirewallD -> rules
       firewalld_rules:
         port_80:
@@ -222,7 +221,6 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
       # FirewallD -> install
       firewalld_install:
         enabled: true
-        packages: [firewalld]
 
   tasks:
     - name: role darexsu firewalld
