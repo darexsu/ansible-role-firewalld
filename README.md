@@ -6,9 +6,9 @@
       - [install](#install)
       - [behaviour](#behaviour)
   - Playbooks (short version):
-      - [install and configure: firewalld](#install-and-configure-firewalld-short-version)
-        - [install: firewalld](#install-firewalld-short-version)
-        - [configure: add firewall rules](#configure-add-firewall-rules-short-version)
+      - [install and configure: firewalld](#install-and-configure-firewalld-merge-version)
+        - [install: firewalld](#install-firewalld-merge-version)
+        - [configure: add firewall rules](#configure-add-firewall-rules-merge-version)
   - Playbooks (full version):
       - [install and configure: firewalld](#install-and-configure-firewalld-full-version)
         - [install: firewalld](#install-firewalld-full-version)
@@ -52,7 +52,7 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
     
 ```
 
-##### Install and configure: firewalld (short version)
+##### Install and configure: firewalld (merge version)
 ```yaml
 
 ---
@@ -94,7 +94,7 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
         name: darexsu.firewalld
 
 ```
-##### Install: firewalld (short version)
+##### Install: firewalld (merge version)
 ```yaml
 
 ---
@@ -116,7 +116,7 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
         name: darexsu.firewalld
 
 ```
-##### Configure: add firewall rules (short version)
+##### Configure: add firewall rules (merge version)
 ```yaml
 
 ---
