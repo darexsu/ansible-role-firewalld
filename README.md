@@ -166,40 +166,39 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
   become: true
 
   vars:
-    merge:
-      # FirewallD
-      firewalld:
+    # FirewallD
+    firewalld:
+      enabled: true
+      service:
         enabled: true
-        service:
-          enabled: true
-          state: "started"
-      # FirewallD -> install
-      firewalld_install:
+        state: "started"
+    # FirewallD -> install
+    firewalld_install:
+      enabled: true
+    # FirewallD -> rules
+    firewalld_rules:
+      port_80:
         enabled: true
-      # FirewallD -> rules
-      firewalld_rules:
-        port_80:
-          enabled: true
-          zone: "public"
-          state: "enabled"
-          port: "80/tcp"
-          permanent: true
-          immediate: true
-        service_http:
-          enabled: true
-          zone: "public"
-          state: "enabled"
-          service: "http"
-          permanent: true
-          immediate: true
-        service_https:
-          enabled: true
-          zone: "public"
-          state: "enabled"
-          service: "https"
-          permanent: true
-          immediate: true
-      # ...
+        zone: "public"
+        state: "enabled"
+        port: "80/tcp"
+        permanent: true
+        immediate: true
+      service_http:
+        enabled: true
+        zone: "public"
+        state: "enabled"
+        service: "http"
+        permanent: true
+        immediate: true
+      service_https:
+        enabled: true
+        zone: "public"
+        state: "enabled"
+        service: "https"
+        permanent: true
+        immediate: true
+    # ...
   tasks:
     - name: role darexsu firewalld
       include_role:
@@ -214,13 +213,12 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
   become: true
 
   vars:
-    merge:
-      # FirewallD
-      firewalld:
-        enabled: true
-      # FirewallD -> install
-      firewalld_install:
-        enabled: true
+    # FirewallD
+    firewalld:
+      enabled: true
+    # FirewallD -> install
+    firewalld_install:
+      enabled: true
 
   tasks:
     - name: role darexsu firewalld
@@ -235,40 +233,39 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
   become: true
 
   vars:
-    merge:
-      # FirewallD
-      firewalld:
+    # FirewallD
+    firewalld:
+      enabled: true
+      service:
         enabled: true
-        service:
-          enabled: true
-          state: "started"
-      # FirewallD -> rules
-      firewalld_rules:
-        port_80:
-          enabled: true
-          zone: "public"
-          state: "enabled"
-          port: "80/tcp"
-          permanent: true
-          immediate: true
-        service_http:
-          enabled: true
-          zone: "public"
-          state: "enabled"
-          service: "http"
-          permanent: true
-          immediate: true
-        service_https:
-          enabled: true
-          zone: "public"
-          state: "enabled"
-          service: "https"
-          permanent: true
-          immediate: true
-      # rule_name:
-      #   enabled: true
-      #   key: value
-      #   ...
+        state: "started"
+    # FirewallD -> rules
+    firewalld_rules:
+      port_80:
+        enabled: true
+        zone: "public"
+        state: "enabled"
+        port: "80/tcp"
+        permanent: true
+        immediate: true
+      service_http:
+        enabled: true
+        zone: "public"
+        state: "enabled"
+        service: "http"
+        permanent: true
+        immediate: true
+      service_https:
+        enabled: true
+        zone: "public"
+        state: "enabled"
+        service: "https"
+        permanent: true
+        immediate: true
+    # rule_name:
+    #   enabled: true
+    #   key: value
+    #   ...
   tasks:
     - name: role darexsu firewalld
       include_role:
