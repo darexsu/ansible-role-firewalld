@@ -5,7 +5,7 @@
       - [platforms](#platforms)
       - [install](#install)
       - [behaviour](#behaviour)
-  - Playbooks (short version):
+  - Playbooks (merge version):
       - [install and configure: firewalld](#install-and-configure-firewalld-merge-version)
         - [install: firewalld](#install-firewalld-merge-version)
         - [configure: add firewall rules](#configure-add-firewall-rules-merge-version)
